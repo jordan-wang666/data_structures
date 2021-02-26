@@ -163,7 +163,7 @@ public class MyArrayList<T extends Object> implements Iterable<T> {
         return new ArrayListIterator();
     }
 
-    private class ArrayListIterator<E extends T> implements Iterator<E> {
+    private class ArrayListIterator<T> implements Iterator<T> {
 
         private int current = 0;
 
@@ -173,11 +173,11 @@ public class MyArrayList<T extends Object> implements Iterable<T> {
         }
 
         @Override
-        public E next() {
+        public T next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            return (E) theItems[current++];
+            return (T) theItems[current++];
         }
 
         @Override
@@ -216,6 +216,12 @@ public class MyArrayList<T extends Object> implements Iterable<T> {
         list.remove(3);
         for (int i = 0; i < list.size(); i++) {
             System.out.println("第" + i + "个元素=" + list.get(i));
+        }
+
+        System.out.println("迭代器测试");
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 }
