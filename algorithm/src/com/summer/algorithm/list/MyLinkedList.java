@@ -1,6 +1,8 @@
 package com.summer.algorithm.list;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 /**
@@ -110,7 +112,7 @@ public class MyLinkedList<T> implements Iterable<T> {
     private T remove(Node<T> p) {
         p.next.prev = p.prev;
         p.prev.next = p.next;
-        theSize++;
+        theSize--;
         modCount++;
         return p.data;
     }
@@ -140,21 +142,42 @@ public class MyLinkedList<T> implements Iterable<T> {
         return p;
     }
 
-    // TODO 没实现
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new LinkedListIterator();
     }
 
-    private static class Node<T> {
-        public T data;
-        public Node<T> prev;
-        public Node<T> next;
+    private static class Node<E> {
+        E data;
+        Node<E> prev;
+        Node<E> next;
 
-        public Node(T d, Node<T> begin, Node<T> end) {
+        public Node(E d, Node<E> begin, Node<E> end) {
             data = d;
             prev = begin;
             next = end;
+        }
+    }
+
+    /**
+     * 有问题
+     */
+    private class LinkedListIterator implements Iterator<T> {
+
+        @Override
+        public boolean hasNext() {
+            return beginMarker.next != endMarker;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            T nextItem = endMarker.next.data;
+            Node<T> next = endMarker.next.next;
+            return null;
         }
     }
 
