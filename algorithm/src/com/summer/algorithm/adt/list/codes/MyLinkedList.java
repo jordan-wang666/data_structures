@@ -1,9 +1,7 @@
-package com.summer.algorithm.list;
+package com.summer.algorithm.adt.list.codes;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.NoSuchElementException;
-import java.util.function.Consumer;
 
 /**
  * 手写LinkedList

@@ -1,4 +1,4 @@
-package com.summer.algorithm.list;
+package com.summer.algorithm.adt.list.codes;
 
 import java.util.Arrays;
 import java.util.Random;

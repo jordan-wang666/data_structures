@@ -1,4 +1,4 @@
-package com.summer.algorithm.list;
+package com.summer.algorithm.adt.list.codes;
 
 import java.util.ArrayList;
 import java.util.List;
